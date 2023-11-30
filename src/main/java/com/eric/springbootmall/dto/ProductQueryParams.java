@@ -7,5 +7,7 @@ import lombok.Data;
 public class ProductQueryParams {
     private ProductCategory category;
     private String search;
+    private String orderBy;
+    private String sort;
 }
 
