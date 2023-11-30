@@ -1,5 +1,6 @@
 package com.eric.springbootmall.controller;
 
+import com.eric.springbootmall.constant.ProductCategory;
 import com.eric.springbootmall.dto.ProductRequest;
 import com.eric.springbootmall.model.Product;
 import com.eric.springbootmall.service.ProductService;
@@ -8,10 +9,28 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ProductController {
     @Autowired
     private ProductService productService;
+
+    @GetMapping("/products")
+    public ResponseEntity<List<Product>> getProducts(
+            @RequestParam(required = false) ProductCategory category,
+            @RequestParam(required = false) String search
+    ){
+        List<Product> productList = productService.getProducts(category,search);
+
+        return  ResponseEntity.status(HttpStatus.OK).body(productList);
+    }
+
+
+
+
+
+
     @GetMapping("/products/{productId}")
     public ResponseEntity<Product> getProduct(@PathVariable Integer productId){
         Product product = productService.getProductById(productId);
