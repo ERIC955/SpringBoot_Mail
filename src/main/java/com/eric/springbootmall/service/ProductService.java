@@ -7,6 +7,7 @@ import com.eric.springbootmall.model.Product;
 import java.util.List;
 
 public interface ProductService {
+    Integer conutProduct(ProductQueryParams productQueryParams);
 
     List<Product> getProducts(ProductQueryParams productQueryParams);
 
