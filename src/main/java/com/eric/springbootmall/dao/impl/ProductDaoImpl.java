@@ -27,7 +27,7 @@ public class ProductDaoImpl implements ProductDao {
 
         Map<String ,Object>map = new HashMap<>();
         //查詢條件
-        sql = addFilteringSql(sql ,map,productQueryParams)
+        sql = addFilteringSql(sql ,map,productQueryParams);
 
         Integer total = namedParameterJdbcTemplate.queryForObject(sql,map,Integer.class);
 
@@ -42,7 +42,7 @@ public class ProductDaoImpl implements ProductDao {
 
         Map<String ,Object>map = new HashMap<>();
         //查詢條件
-        sql = addFilteringSql(sql ,map,productQueryParams)
+        sql = addFilteringSql(sql ,map,productQueryParams);
         //排序
         sql = sql + " ORDER BY " + productQueryParams.getOrderBy() + " " +productQueryParams.getSort();
         //分頁
